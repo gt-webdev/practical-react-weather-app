@@ -1,5 +1,6 @@
 export default function Weather(props) {
     var weatherData = props.weatherData
+    console.log(weatherData)
     return (
         <div>
             {

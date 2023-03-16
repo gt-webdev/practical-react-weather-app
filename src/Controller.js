@@ -12,7 +12,6 @@ export default function WeatherController(props) {
             .then((response) => response.json())
             .then((data) => {
                 setWeatherData(data['list'])
-                console.log(weatherData)
             })
             .catch((err) => {
                 console.log(err.message)
@@ -23,7 +22,7 @@ export default function WeatherController(props) {
         <div>
             <Headbar />
             <div className="bodyContainer">
-                <div> Filters </div>
+                <div className="filterText"> Filters </div>
                 <div>
                     <button> Show 12 HR</button>
                     <button> Show 24 HR</button>
