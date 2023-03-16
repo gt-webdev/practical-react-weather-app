@@ -1,25 +1,22 @@
-
+import "./HourlyWeatherDisplay.css";
 
 export default function HourlyWeatherDisplay(props) {
     return (
-        <div>
-            {
-                props.weatherData.map((item) => (
+        <>
+            {props.weatherData.map((item) => (
+                <div className="weatherItem">
                     <div>
-                        <div>
-                            <h1>
-                                Time: {item.time}
-                            </h1>
-                        </div>
-                        <div>
-                            <h1>
-                                Weather: {item.condition}
-                            </h1>
-
-                        </div>
+                        <p>
+                            Time: {item.time}
+                        </p>
                     </div>
-                ))
-            }
-        </div>
+                    <div>
+                        <p>
+                            Weather: {item.condition}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </>
     )
 }

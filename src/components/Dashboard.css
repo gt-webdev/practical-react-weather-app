@@ -13,9 +13,11 @@
 .hourlyWeatherContainer {
     height: 40vh;
     display: flex;
+    flex-direction: column;
     background: rgba(255,255,255, 10%);
     border-radius: 15px;
     margin: 0rem 3rem 0rem 3rem;
+    padding: 0px 10px 0px 10px;
     font-size: 1rem;
     overflow: scroll;
 }
@@ -36,5 +38,6 @@
     font-size: 1rem;
     font-weight: 600;
     padding: 5px 10px 5px 10px;
+    margin: 0rem 0.5rem 0rem 0.5rem;
     border-radius: 4px;
 }

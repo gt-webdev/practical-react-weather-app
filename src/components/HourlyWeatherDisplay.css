@@ -1,0 +1,9 @@
+.weatherItem {
+    width: 100%;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 0.1px solid;
+    border-radius: 10px;
+}
