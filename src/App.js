@@ -1,8 +1,7 @@
-import './App.css';
-import Weather from './Weather';
+import WeatherController from "./Controller"
 function App() {
   return (
-    <Weather/>
+    <WeatherController />
   );
 }
 
