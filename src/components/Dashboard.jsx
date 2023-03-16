@@ -3,6 +3,7 @@ import fetchWeatherData from "../lib/weatherLib";
 import HourlyWeatherDisplay from "./HourlyWeatherDisplay";
 
 import "./Dashboard.css";
+import FilterButton from "./FilterButton";
 
 export default function WeatherControl(props) {
     const [weatherData, setWeatherData] = useState([]);
@@ -17,8 +18,8 @@ export default function WeatherControl(props) {
             <div className="bodyContainer">
                 <div className="filterText"> Filters </div>
                 <div className="buttonContainer">
-                    <button className="filterButton"> Show 12 HR</button>
-                    <button className="filterButton"> Show 24 HR</button>
+                    <FilterButton label={"12 hours"}/>
+                    <FilterButton label={"24 hours"}/>
                 </div>
                 <div className="headerContainer">
                     <h3>Hourly Weather Forecast</h3>

@@ -6,7 +6,10 @@ export default function WeatherDisplay() {
             <div className="textContainer">
                 <h3>Atlanta</h3>
                 <div className="imageContainer">
-                    <img src={`https://openweathermap.org/img/wn/10d@2x.png`}/>
+                    <img 
+                        src={`https://openweathermap.org/img/wn/10d@2x.png`}
+                        alt="Weather Icon"    
+                    />
                     <h1>
                         62°F
                     </h1>
