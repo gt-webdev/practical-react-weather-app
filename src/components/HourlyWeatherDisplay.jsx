@@ -7,12 +7,11 @@ export default function HourlyWeatherDisplay(props) {
                 <div className="weatherItem">
                     <div>
                         <p>
-                            Time: {item.time}
+                            {item.time}
                         </p>
-                    </div>
-                    <div>
+                        <img src={`https://openweathermap.org/img/wn/${item.icon}.png`}/>
                         <p>
-                            Weather: {item.condition}
+                            {item.condition}
                         </p>
                     </div>
                 </div>

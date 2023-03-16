@@ -20,6 +20,9 @@ export default function WeatherControl(props) {
                     <button className="filterButton"> Show 12 HR</button>
                     <button className="filterButton"> Show 24 HR</button>
                 </div>
+                <div className="headerContainer">
+                    <h3>Hourly Weather Forecast</h3>
+                </div>
                 <div className="hourlyWeatherContainer">
                     {!is12HourFormat
                         ? <HourlyWeatherDisplay weatherData={weatherData} />

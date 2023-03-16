@@ -3,17 +3,13 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 5rem;
+    padding: 5rem 3rem 4rem 3rem;
     letter-spacing: 0.05em;
 }
 
-
-h3 {
-    font-size: 2rem;
-    margin: 0px 0px 15px 0px;
-}
-
-h4 {
-    font-size: 1rem;;
-    margin: 5px;
+.imageContainer {
+    display: flex;
+    margin: 1.25rem 0px 1.25px 0px;
+    flex-direction: row;
+    align-items: center;
 }

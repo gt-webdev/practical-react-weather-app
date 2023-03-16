@@ -8,7 +8,7 @@ export default function fetchWeatherData() {
         .then((data) => {
             return data.list.map((item) => (
                 {
-                    time: item.dt_txt.split(" ")[1],
+                    time: convertTime(item.dt_txt.split(" ")[1]),
                     temp: item.main.temp,
                     condition: item.weather[0].main,
                     icon: item.weather[0].icon
@@ -19,3 +19,15 @@ export default function fetchWeatherData() {
             console.log(err.message)
         })
 }
+
+function convertTime(timeString) {
+    const timeArr = timeString.split(':');
+    const minutes = timeArr[1];
+    var hours = parseInt(timeArr[0]);
+  
+    const amPm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // if hours is 0, set it to 12
+  
+    return hours + ':' + minutes + ' ' + amPm;
+  }
