@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem;
+    letter-spacing: 0.05em;
+}
+
+
+h3 {
+    font-size: 2rem;
+    margin: 0px 0px 15px 0px;
+}
+
+h4 {
+    font-size: 1rem;;
+    margin: 5px;
+}
