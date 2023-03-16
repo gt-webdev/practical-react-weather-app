@@ -33,3 +33,5 @@ It did not right? But, that is the anticipated result. Do you know why it is not
 Can you see what type of data are being returned by the Weather API? What do you need to do to see the response body that describes the weather? What variable contains this data? 
 </br>
 Once you find it, you can do so much with it. For example, you can display data regarding timezone, humidity level, pressure, wind speed, etc. You have the ability to display any output you want onto your screen.
+</br>
+<b>You will notice that the date and temperature displayed on the screen is static.</b> If we are able to extract the data from the weather API, then we should be able to replace the date and temperature to a dynamic form of data. Let's give it a try!
