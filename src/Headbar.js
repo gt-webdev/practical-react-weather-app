@@ -5,8 +5,9 @@ export default function Headbar() {
         <div className="headbarContainer">
             <div className="headbarTextContatiner">
                 <h1>
-                    My ATL Weather App
+                    Atlanta, Georgia
                 </h1>
+                <h3>March 16th, 2023</h3>
             </div>
         </div>
     );
