@@ -5,7 +5,7 @@ export default function Headbar() {
         <div className="headbarContainer">
             <div className="headbarTextContatiner">
                 <h1>
-                    Hi, I'm the Headbar Component
+                    My ATL Weather App
                 </h1>
             </div>
         </div>
