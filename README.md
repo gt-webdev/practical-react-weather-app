@@ -89,6 +89,12 @@ Example output:
 
 ### :pencil: Tasks
 To help build out your weather application, you will need to achieve the following tasks: 
+
+ - [ ] Remove hard-coding from `CurrentWeatherDisplay`
+ - [ ] Conditionally render Celsius or Temperature in `CurrentWeatherDisplay`
+ - [ ] Create a component to represent forecast items
+ - [ ] Apply filtering to forecast data
+
 #### Task #1: Remove hard-coding from `CurrentWeatherDisplay`
 We have that the `CurrentWeatherDisplay` is hardcoded with a city name, weather condition, and temperature values (in Fahrenheit). 
 
