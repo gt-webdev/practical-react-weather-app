@@ -39,7 +39,7 @@ export function fetchHourlyData() {
                 {
                     time: convertHourFormat(item.dt_txt.split(" ")[1]),
                     date: convertDateFormat(item.dt_txt.split(" ")[0]),
-                    dateNum: Math.floor(index / 8),
+                    dateNum: Math.floor(index / 8) + 1,
                     condition: item.weather[0].main,
                     icon: item.weather[0].icon
                 }
