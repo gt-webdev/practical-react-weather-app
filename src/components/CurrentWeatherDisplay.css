@@ -13,3 +13,9 @@
     align-items: center;
     justify-content: center;
 }
+
+.mainTempLabel {
+    background-color: transparent;
+    color: white;
+    border: none;
+}

@@ -26,6 +26,11 @@ function convertKelvinToFahrenheit(kelvin) {
     return `${Math.round((kelvin - 273.15) * 9/5 + 32)}°F`;
 }
 
+// Converts a kelvin value (number) to a string representing the same value in Celsius.
+function convertKelvintToCelsius(kelvin) {
+    return `${Math.round(kelvin - 273.15)}°C`;
+}
+
 export function fetchHourlyData() {
     return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${longitude}&lon=${latitude}&appid=${API_KEY}`)
         .then((response) => response.json())
@@ -44,7 +49,7 @@ export function fetchHourlyData() {
         })
 }
 
-export function fetchCurrentWeather() {
+export function fetchCurrentWeather(isFahrenheit) {
     return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
         .then((response) => response.json())
         .then((data) => {
@@ -52,10 +57,10 @@ export function fetchCurrentWeather() {
                 city: data.name,
                 icon: data.weather[0].icon,
                 condition: data.weather[0].description,
-                temp: convertKelvinToFahrenheit(data.main.temp),
-                min_temp: convertKelvinToFahrenheit(data.main.temp_min),
-                max_temp: convertKelvinToFahrenheit(data.main.temp_max),
-                feels_like: convertKelvinToFahrenheit(data.main.feels_like)
+                temp: isFahrenheit ? convertKelvinToFahrenheit(data.main.temp) : convertKelvintToCelsius(data.main.temp),
+                min_temp: isFahrenheit ? convertKelvinToFahrenheit(data.main.temp_min) : convertKelvintToCelsius(data.main.temp_min),
+                max_temp: isFahrenheit ? convertKelvinToFahrenheit(data.main.temp_max) : convertKelvintToCelsius(data.main.temp_max),
+                feels_like: isFahrenheit ? convertKelvinToFahrenheit(data.main.feels_like) : convertKelvintToCelsius(data.main.feels_like)
             }
         })
 }

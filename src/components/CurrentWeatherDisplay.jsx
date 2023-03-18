@@ -3,25 +3,39 @@ import { fetchCurrentWeather } from "../lib/weatherLib";
 import "./CurrentWeatherDisplay.css";
 
 export default function CurrentWeatherDisplay() {
-    const [currentWeather, setCurrrentWeather] = useState({});
+    const [currentWeatherFahrenheit, setCurrrentWeatherFahrenheit] = useState({});
+    const [currentWeatherCelsius, setCurrentWeatherCelsius] = useState({});
+    const [isFahrenheit, setIsFahrenheit] = useState(true);
 
     useEffect(() => {
-        fetchCurrentWeather().then(response => setCurrrentWeather(response));
+        fetchCurrentWeather(true).then(response => setCurrrentWeatherFahrenheit(response));
+        fetchCurrentWeather(false).then(response => setCurrentWeatherCelsius(response));
     }, []); 
 
     return (
         <div className="container">
             <div className="textContainer">
-                <h2>{currentWeather.city}</h2>
+                <h2>{currentWeatherFahrenheit.city}</h2>
                 <div className="imageContainer">
                     <img 
-                        src={`https://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`}
+                        src={`https://openweathermap.org/img/wn/${currentWeatherFahrenheit.icon}@2x.png`}
                         alt="Weather Icon"    
                     />
-                    <h1>{currentWeather.temp}</h1>
+                    <button className="mainTempLabel" onClick={() => setIsFahrenheit(!isFahrenheit)}>
+                        {isFahrenheit ? <h1>{currentWeatherFahrenheit.temp}</h1> : <h1>{currentWeatherCelsius.temp}</h1>}
+                    </button>
                 </div>
-                <h4>{`${currentWeather.min_temp} / ${currentWeather.max_temp} -- Feels like ${currentWeather.feels_like}`}</h4>
-                <h4>{currentWeather.condition}</h4>
+                {isFahrenheit ? (
+                    <>
+                        <h4>{`${currentWeatherFahrenheit.min_temp} / ${currentWeatherFahrenheit.max_temp} -- Feels like ${currentWeatherFahrenheit.feels_like}`}</h4>
+                        <h4>{currentWeatherFahrenheit.condition}</h4>
+                    </>
+                ) : (
+                    <>
+                        <h4>{`${currentWeatherCelsius.min_temp} / ${currentWeatherCelsius.max_temp} -- Feels like ${currentWeatherCelsius.feels_like}`}</h4>
+                        <h4>{currentWeatherCelsius.condition}</h4>
+                    </>
+                )}
             </div>
         </div>
     );

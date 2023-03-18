@@ -1,4 +1,4 @@
-import WeatherItem from "./WeatherItem";
+import ForecastItem from "./ForecastItem";
 import "./ForecastDisplay.css";
 
 export default function ForecastDisplay(props) {
@@ -7,7 +7,7 @@ export default function ForecastDisplay(props) {
             <h3 className="forecastDisplayLabel">{props.label}</h3>
             <div className="forecastDisplayContainer">
                 {props.data.map((item) => (
-                    <WeatherItem 
+                    <ForecastItem 
                         date={item.date}
                         time={item.time} 
                         icon={item.icon}

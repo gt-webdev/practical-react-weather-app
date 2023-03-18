@@ -1,6 +1,3 @@
-
-
-
 ## Practical React -  Weather App Activity
 
 ### :atom_symbol: Introduction 
@@ -70,7 +67,7 @@ Example output:
 	}
 ]
 ```
-2. `fetchCurrentWeather()`: returns an object containing relevant data for current weather. 
+2. `fetchCurrentWeather(isFahrenheit)`: returns an object containing relevant data for current weather. If the `isFahrenheit` input is set to `true`, all temperature values will be presented in °F or otherwise in °C.
 
 Example output: 
 ```json

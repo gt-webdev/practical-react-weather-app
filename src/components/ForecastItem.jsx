@@ -1,6 +1,6 @@
-import "./WeatherItem.css";
+import "./ForecastItem.css";
 
-export default function WeatherItem(props) {
+export default function ForecastItem(props) {
     return (
         <div className="weatherItem">
             <p>{props.date}</p>
