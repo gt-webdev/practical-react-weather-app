@@ -2,7 +2,8 @@ const longitude = "-84.387985";
 const latitude = "33.748997";
 const API_KEY = "80317ae7566d28e642a64c8676ffc9f8"
 
-function convertTime(timeString) {
+// Converts time "HH:MM:SS" from 24-hour format to 12-hour format
+function convertHourFormat(timeString) {
     const timeArr = timeString.split(':');
     const minutes = timeArr[1];
     var hours = parseInt(timeArr[0]);
@@ -14,6 +15,13 @@ function convertTime(timeString) {
     return hours + ':' + minutes + ' ' + amPm;
 }
 
+// Converts dates of the format "YYYY-MM-DD" to the format "MM/DD/YYYY".
+function convertDateFormat(dateString) {
+  const [year, month, day] = dateString.split('-');
+  return `${month}/${day}/${year}`;
+}
+
+// Converts a kelvin value (number) to a string representing the same value in Fahrenheit.
 function convertKelvinToFahrenheit(kelvin) {
     return `${Math.round((kelvin - 273.15) * 9/5 + 32)}°F`;
 }
@@ -22,10 +30,10 @@ export function fetchHourlyData() {
     return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${longitude}&lon=${latitude}&appid=${API_KEY}`)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data.list);
             return data.list.map((item) => (
                 {
-                    time: convertTime(item.dt_txt.split(" ")[1]),
+                    time: convertHourFormat(item.dt_txt.split(" ")[1]),
+                    date: convertDateFormat(item.dt_txt.split(" ")[0]),
                     temp: item.main.temp,
                     condition: item.weather[0].main,
                     icon: item.weather[0].icon
@@ -33,7 +41,7 @@ export function fetchHourlyData() {
             ));
         })
         .catch((err) => {
-            console.log(err.message)
+            console.error(err.message)
         })
 }
 

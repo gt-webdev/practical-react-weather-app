@@ -16,10 +16,23 @@
     color: rgb(37, 37, 37);
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    padding: 3rem 0rem 0rem 0rem;
+}
+
+.container p {
+    margin: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 .filterContainer {
-    padding: 1rem 0rem 1rem 0rem;
+    padding: 1rem 1rem 1rem 1rem;
     margin: 1rem 0rem 1.5rem 0rem;
-    width: 50%;
+    width: fit-content;
     display: flex;
     justify-content: center;
     align-self: center;

@@ -36,4 +36,4 @@ npm run start
 
 ### :pencil: Tasks
 > **Goal:** We want to be able to model our app to look similar to the one presented in this image: 
-![enter image description here](https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1809/posts/92887/image-upload/hiher.jpg)
+![Example of Completed Weather App](./public/complete_example.png)

@@ -8,9 +8,11 @@ export default function WeatherDisplay(props) {
             <div className="forecastDisplayContainer">
                 {props.data.map((item) => (
                     <WeatherItem 
+                        date={item.date}
                         time={item.time} 
                         icon={item.icon}
                         condition={item.condition}
+                        key={`${item.date} - ${item.time}`}
                     />
                 ))}
             </div>

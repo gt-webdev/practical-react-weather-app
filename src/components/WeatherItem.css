@@ -9,3 +9,12 @@
     white-space: nowrap;
     border-radius: 10px;
 }
+
+.weatherItem p {
+    font-weight: 600;
+    margin: 10px 0px 10px 0px;
+}
+
+.weatherItem img {
+    margin: 10px 0px 10px 0px;
+}
