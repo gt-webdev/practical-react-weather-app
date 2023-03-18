@@ -60,10 +60,10 @@ Example output:
 		"icon": "04d",
 	},
 	{
-	    "time": "3:00 AM",
-	    "date": "03/23/2023",
-	    "condition": "Clouds",
-	    "icon": "04n"
+	    	"time": "3:00 AM",
+	    	"date": "03/23/2023",
+	    	"condition": "Clouds",
+		"icon": "04n"
 	}
 ]
 ```
@@ -114,8 +114,10 @@ However, we have that these buttons perform no filtering at all since each of th
 function Parent() {
 	const [name, setName] = useState("");
 	return (
-		<FirstChild childName={name} setChildName={setChildName}/>
-		<AnotherChild kidName={name} setKidName={setChildName}/>
+		<>
+			<FirstChild childName={name} setChildName={setChildName}/>
+			<AnotherChild kidName={name} setKidName={setChildName}/>
+		</>
 	);
 }  
 ```
