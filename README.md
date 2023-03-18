@@ -60,10 +60,10 @@ Example output:
 		"icon": "04d",
 	},
 	{
-	    	"time": "3:00 AM",
-	    	"date": "03/23/2023",
-	    	"condition": "Clouds",
-		"icon": "04n"
+	    "time": "3:00 AM",
+	    "date": "03/23/2023",
+	    "condition": "Clouds",
+	    "icon": "04n"
 	}
 ]
 ```
@@ -90,20 +90,29 @@ Example output:
 ### :pencil: Tasks
 To help build out your weather application, you will need to achieve the following tasks: 
 #### Task #1: Remove hard-coding from `CurrentWeatherDisplay`
-We have that the `CurrentWeatherDisplay` is hardcoded with a city name, weather condition, and temperature values.
+We have that the `CurrentWeatherDisplay` is hardcoded with a city name, weather condition, and temperature values (in Fahrenheit). 
 
-However,  we would like to have this component to receive current weather data during its *mounting* stage and render these values into its JSX.
+However,  we would like to have this component receive current weather data (with Fahrenheit temperatures) during its *mounting* stage and render these values into its JSX.
 
-> Hint: Think about how we can execute some code (e.g. function/API calls or setting variables) at certain stages in a component's lifecycle, especially during a component's *mounting* stage.
+> Hint: Think about how we can execute some code (e.g. function calls, API calls, or setting variables) at certain stages in a component's lifecycle, especially during a component's *mounting* stage.
 
-#### Task #2: Create a component to represent forecast items
+#### Task #2: Conditionally render Celsius or Temperature in `CurrentWeatherDisplay`
+Now that you have populated the `CurrentWeatherDisplay` component with values from your API call, we would like you to conditionally render the temperatures between Fahrenheit and Celsius. 
+
+Create a state to keep track of which temperature you'll be displaying and a button to toggle this state between °F and °C. Depending on this state, conditionally render the appropriate temperature to your JSX.
+
+> Note: You can directly alter the output of `fetchCurrentWeather()` with this state, and render its output. However, we would like you to make use of conditional rendering to complete this task. 
+
+Two states: `currentWeatherFahrenheit` and `currentWeatherCelsius` have been provided for you. Use the values of these two states to conditionally render °F and °C for your temperature values.
+
+#### Task #3: Create a component to represent forecast items
 The `ForecastDisplay` does not present any forecasts. Retrieve a list of forecast data from `fetchHourlyData()`, and within `ForecastDisplay`, create a child custom component `ForecastItem` for each element on this list. 
 
 > Hint: You'll need to do two things  here:
 > 1. Create `ForecastItem` in another file and think about what kinds of props (if any) would need to be inputted into this component.
-> 2. Return this component for each element in the result of `fetchHourlyData()` inside your `ForecastDisplay` component. Make sure you are passing in props into your `ForecastItem` components! (if you require any)
+> 2. Return this component for each element in the result of `fetchHourlyData()` inside your `ForecastDisplay` component. Make sure you are passing in props into your `ForecastItem` components! (if you require any).
 
-#### Task #3: Apply filtering to forecast data
+#### Task #4: Apply filtering to forecast data
 We have that the `Filters` component contains five `FilterButton`s. Each of these buttons should filter your forecast data to retrieve all forecast items within `x` amount of days from the time of the API call. For example, the `2 Days` filter button should have your data return all forecast timestamps presented within two days of making the API call.
 
 However, we have that these buttons perform no filtering at all since each of these buttons includes a state `isActive`, without `App` or the other `FilterButtons` knowing what filter is active. 
@@ -114,10 +123,8 @@ However, we have that these buttons perform no filtering at all since each of th
 function Parent() {
 	const [name, setName] = useState("");
 	return (
-		<>
-			<FirstChild childName={name} setChildName={setChildName}/>
-			<AnotherChild kidName={name} setKidName={setChildName}/>
-		</>
+		<FirstChild childName={name} setChildName={setChildName}/>
+		<AnotherChild kidName={name} setKidName={setChildName}/>
 	);
 }  
 ```
