@@ -22,7 +22,7 @@ function FilterButton(props) {
 /**
  * Filters is the parent component of two FilterButton components (shown above).
  */
-export default function Filters(props) {
+export default function Filters() {
   return (
     <div className="container">
       <h2> Filters </h2>
