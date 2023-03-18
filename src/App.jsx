@@ -10,11 +10,7 @@ export default function App() {
     const [filter, setFilter] = useState(5);
 
     const filterData = (data, filterNum) => {
-      if (filterNum === -1) {
-        return data;
-      } else {
-        return data.filter((item, index) => index <= filterNum * 4);
-      }
+      return data.filter((item, index) => index <= filterNum * 4);
     }
 
     useEffect(() => {

@@ -34,6 +34,11 @@ npm install
 npm run start
 ```
 
-### :pencil: Tasks
-> **Goal:** We want to be able to model our app to look similar to the one presented in this image: 
+### :apple: About our Weather app
+> **Goal:** We want to be able to model our app to look similar to the ***left panel*** on this image: 
+
 ![Example of Completed Weather App](./public/complete_example.png)
+
+### :pencil: Tasks
+
+#### Task #1: 

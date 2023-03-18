@@ -1,7 +1,7 @@
 import WeatherItem from "./WeatherItem";
 import "./ForecastDisplay.css";
 
-export default function WeatherDisplay(props) {
+export default function ForecastDisplay(props) {
     return (
         <>
             <h3 className="forecastDisplayLabel">{props.label}</h3>
