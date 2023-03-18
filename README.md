@@ -1,5 +1,6 @@
 
 
+
 ## Practical React -  Weather App Activity
 
 ### :atom_symbol: Introduction 
@@ -14,8 +15,8 @@ This code repository contains the starter code for the coding portion of our *Pr
 You can refer to our [workshop slides](https://docs.google.com/presentation/d/1gEppHNplM2Ox5mp3CvtPqkk8cDMq8v6YwbXSFWTdI80/edit?usp=sharing) if you are unsure about any of these concepts.
  
 ### :desert_island: Getting Started - CodeSandbox
-1. Create an account with [CodeSandbox](https://codesandbox.io/?from-app=1), a web-accessible coding environment where you can update code repositories online without configuring your device.
-2. Click this link to get started with our activity!
+1. Create an account with [CodeSandbox](https://codesandbox.io/?from-app=1), a web-accessible coding environment where you can pull from and update code repositories online without setting up anything on your device.
+2. Click [this link](https://codesandbox.io/p/github/gt-webdev/practical-react-weather-app/main?file=%2FREADME.md&workspace=%257B%2522activeFileId%2522%253A%2522clfd75rm3000ig6i43bad4iwv%2522%252C%2522openFiles%2522%253A%255B%2522%252FREADME.md%2522%255D%252C%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522gitSidebarPanel%2522%253A%2522COMMIT%2522%252C%2522spaces%2522%253A%257B%2522clfd75st400153b6icb1nsoez%2522%253A%257B%2522key%2522%253A%2522clfd75st400153b6icb1nsoez%2522%252C%2522name%2522%253A%2522Default%2522%252C%2522devtools%2522%253A%255B%257B%2522key%2522%253A%2522clfdgtw6f000t3b6jj18x5hwc%2522%252C%2522type%2522%253A%2522PROJECT_SETUP%2522%252C%2522isMinimized%2522%253Afalse%257D%255D%257D%257D%252C%2522currentSpace%2522%253A%2522clfd75st400153b6icb1nsoez%2522%252C%2522spacesOrder%2522%253A%255B%2522clfd75st400153b6icb1nsoez%2522%255D%252C%2522hideCodeEditor%2522%253Afalse%257D) to get started with our activity!
 
 ### :wrench: Getting Started - Github
 > **Note:** Please make sure you have node and npm installed onto your device if you plan on cloning this repository through git.
@@ -35,10 +36,95 @@ npm run start
 ```
 
 ### :apple: About our Weather app
-> **Goal:** We want to be able to model our app to look similar to the ***left panel*** on this image: 
+> **Goal:** We want to be able to model our app to look similar to the completed example in this image: 
 
 ![Example of Completed Weather App](./public/complete_example.png)
 
-### :pencil: Tasks
+The following components are provided to you.
+- `CurrentWeatherDisplay`: displays the current weather and temperatures. 
+- `Filters`: a container of five `FilterButton` components.
+- `ForecastDisplay`: a container that will display all the upcoming weather forecasts returned by an API call (see below)
+- `App`: the component that contains all of the above 
 
-#### Task #1: 
+The CSS for these components will also be included with the starter code for this activity. Feel free to modify these files and/or use them in your implementation of the app.
+
+We have also defined API calls to the [OpenWeatherMap API](https://openweathermap.org/api) in the `lib/weatherLib.js` file.  You will be invoking the following functions from this file when completing your app:
+
+1. `fetchHourlyData()`: returns an array of forecast items, each containing a `date`, `time`, weather `condition`, and `icon` for a timestamp.
+
+Example output:
+```json
+[
+	{
+		
+		date: "03/18/2023",
+		time: "6:00 AM",
+		condition: "Clouds",
+		icon: "04d",
+	},
+	// ...
+	{
+	    time: "3:00 AM",
+	    date: "03/23/2023",
+	    condition: "Clouds",
+	    icon: "04n"
+	}
+]
+```
+2. `fetchCurrentWeather()`: returns an object containing relevant data for current weather. 
+
+Example output: 
+```json
+{
+    "city": "Atlanta",
+    "icon": "04n",
+    "condition": "overcast clouds",
+    "temp": "45°F",
+    "min_temp": "41°F",
+    "max_temp": "48°F",
+    "feels_like": "38°F"
+}
+```
+> **Important Note**: The `icon` attribute in these outputs contain a three-character string. To retrieve its corresponding image, simply place it into the url: `https://openweathermap.org/img/wn/{icon}@.png`, replacing `{icon}`  with your icon value.
+> ```jsx
+> const icon = "04n";
+> return <img src={`https://openweathermap.org/img/wn/{icon}@.png`}/>
+> ```
+
+### :pencil: Tasks
+For this activity, you will need to achieve the following tasks: 
+#### Task #1: Remove hard-coding from `CurrentWeatherDisplay`
+We have that the `CurrentWeatherDisplay` is hardcoded with a city name, weather condition, and temperature values.
+
+However,  we would like to have this component to receive current weather data during its *mounting* stage and render these values into its JSX.
+
+> Hint: Think about how we can execute some code (e.g. function/API calls or setting variables) at certain stages in a component's lifecycle, especially during a component's *mounting* stage.
+
+#### Task #2: Create a component to represent forecast items
+The `ForecastDisplay` does not present any forecasts. Retrieve a list of forecast data from `fetchHourlyData()`, and within `ForecastDisplay`, create a child custom component `ForecastItem` for each element on this list. 
+
+> Hint: You'll need to do three things  here:
+> 1. Create `ForecastItem` in another file and think about what kinds of props (if any) would need to be inputted into this component.
+> 2. 
+> 3. Return this component for each element in the result of `fetchHourlyData()`
+
+#### Task #3: Apply filtering to forecast data
+We have that the `Filters` component contains five `FilterButton`s. Each of these buttons should filter your forecast data to retrieve all forecast items within `x` amount of days from the time of the API call. For example, the `2 Days` filter button should have your data return all forecast timestamps presented within two days of making the API call.
+
+However, we have that these buttons perform no filtering at all since each of these buttons includes a state `isActive`, without `App` or the other `FilterButtons` knowing what filter is active. 
+
+> Hint #1: You will need to *lift state* from the `FilterButton` to an appropriate parent/ancestor. Think about *what data* will be impacted by filtering and *which component contains this*. Then, raise state to their 
+> - Remember: if a parent contains some state (e.g. `name`), it can share this state (and even its setState) to its child components by passing the state through props.
+```jsx
+function Parent() {
+	const [name, setName] = useState("");
+	return (
+		<Child childName={name} setChildName={setChildName}/>
+		<DifferentChild kidName={name} setKidName={setChildName}/>
+	);
+}  
+```
+
+> Hint #2: Once you've decided on the correct parent/ancestor to lift state to, think about *what* that state would look like in the parent. 
+>
+> The `FilterButton` component initially has an `isActive` boolean state, but would maintaining five different `isActive` states in the parent be efficient? Could a numbered state possibly help with this? 

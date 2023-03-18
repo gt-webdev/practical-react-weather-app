@@ -34,7 +34,6 @@ export function fetchHourlyData() {
                 {
                     time: convertHourFormat(item.dt_txt.split(" ")[1]),
                     date: convertDateFormat(item.dt_txt.split(" ")[0]),
-                    temp: item.main.temp,
                     condition: item.weather[0].main,
                     icon: item.weather[0].icon
                 }
