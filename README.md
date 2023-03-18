@@ -1,3 +1,4 @@
+
 ## Practical React -  Weather App Activity
 
 ### :atom_symbol: Introduction 
@@ -33,7 +34,8 @@ npm run start
 ```
 
 ### :apple: About our Weather app
-> **Goal:** We want to be able to model our app to look similar to the completed example in this image: 
+> **Goal:** We want to be able to model our app to look similar to the completed example in the below image.
+> - The code for this specific example can be found in the `solution` branch of this repository.
 
 ![Example of Completed Weather App](./public/complete_example.png)
 
@@ -56,12 +58,14 @@ Example output:
 		
 		"date": "03/18/2023",
 		"time": "6:00 AM",
+		"dateNum": 1,
 		"condition": "Clouds",
 		"icon": "04d",
 	},
 	{
 	    "time": "3:00 AM",
 	    "date": "03/23/2023",
+		"dateNum": 5,
 	    "condition": "Clouds",
 	    "icon": "04n"
 	}
@@ -95,14 +99,14 @@ To help build out your weather application, you will need to achieve the followi
  - [ ] Create a component to represent forecast items
  - [ ] Apply filtering to forecast data
 
-#### Task #1: Remove hard-coding from `CurrentWeatherDisplay`
+#### :question: Task #1: Remove hard-coding from `CurrentWeatherDisplay`
 We have that the `CurrentWeatherDisplay` is hardcoded with a city name, weather condition, and temperature values (in Fahrenheit). 
 
 However,  we would like to have this component receive current weather data (with Fahrenheit temperatures) during its *mounting* stage and render these values into its JSX.
 
 > Hint: Think about how we can execute some code (e.g. function calls, API calls, or setting variables) at certain stages in a component's lifecycle, especially during a component's *mounting* stage.
 
-#### Task #2: Conditionally render Celsius or Temperature in `CurrentWeatherDisplay`
+#### :question: Task #2: Conditionally render Celsius or Temperature in `CurrentWeatherDisplay`
 Now that you have populated the `CurrentWeatherDisplay` component with values from your API call, we would like you to conditionally render the temperatures between Fahrenheit and Celsius. 
 
 Create a state to keep track of which temperature you'll be displaying and a button to toggle this state between °F and °C. Depending on this state, conditionally render the appropriate temperature to your JSX.
@@ -111,19 +115,20 @@ Create a state to keep track of which temperature you'll be displaying and a but
 
 Two states: `currentWeatherFahrenheit` and `currentWeatherCelsius` have been provided for you. Use the values of these two states to conditionally render °F and °C for your temperature values.
 
-#### Task #3: Create a component to represent forecast items
+#### :question: Task #3: Create a component to represent forecast items
 The `ForecastDisplay` does not present any forecasts. Retrieve a list of forecast data from `fetchHourlyData()`, and within `ForecastDisplay`, create a child custom component `ForecastItem` for each element on this list. 
 
-> Hint: You'll need to do two things  here:
+> Hint: You'll need to do three things  here:
 > 1. Create `ForecastItem` in another file and think about what kinds of props (if any) would need to be inputted into this component.
-> 2. Return this component for each element in the result of `fetchHourlyData()` inside your `ForecastDisplay` component. Make sure you are passing in props into your `ForecastItem` components! (if you require any).
+> 2. Import your new component into the `ForecastDisplay` to use it in `ForecastDisplay`'s JSX. 
+> 3. Return this component for each element in the result of `fetchHourlyData()` inside your `ForecastDisplay` component. Make sure you are passing in props into your `ForecastItem` components! (if you require any).
 
-#### Task #4: Apply filtering to forecast data
+#### :question: Task #4: Apply filtering to forecast data
 We have that the `Filters` component contains five `FilterButton`s. Each of these buttons should filter your forecast data to retrieve all forecast items within `x` amount of days from the time of the API call. For example, the `2 Days` filter button should have your data return all forecast timestamps presented within two days of making the API call.
 
 However, we have that these buttons perform no filtering at all since each of these buttons includes a state `isActive`, without `App` or the other `FilterButtons` knowing what filter is active. 
 
-> Hint #1: You will need to *lift state* from the `FilterButton` to an appropriate parent/ancestor. Think about *what data* will be impacted by filtering and *which component contains this*. Then, raise state to their 
+> Hint #1: You will need to *lift state* from the `FilterButton` to an appropriate parent/ancestor. Think about *what data* will be impacted by filtering and *which component contains this*. Then, lift your state to that component.
 > - Remember: if a parent contains some state (e.g. `name`), it can share this state (and even its setState) to its child components by passing the state through props.
 ```jsx
 function Parent() {
@@ -135,6 +140,10 @@ function Parent() {
 }  
 ```
 
-> Hint #2: Once you've decided on the correct parent/ancestor to lift state to, think about *what* that state would look like in the parent. 
->
-> The `FilterButton` component initially has an `isActive` boolean state, but would maintaining five different `isActive` boolean states in the parent be efficient? Could a numbered state possibly help with this? 
+> Hint #2: Once you've decided on the correct parent/ancestor to lift state to, decide on how you want to filter data. You may want to to filter by the `dateNum` attribute from the output of `fetchHourlyData()`.
+
+> Hint #3: Think about *what* the lifted state would look like in the parent. 
+> The `FilterButton` component initially has an `isActive` boolean state, but would maintaining five different `isActive` boolean states in the parent be 
+> efficient? Could a numbered state possibly help with this?
+
+Best of luck in building this app! :wave:

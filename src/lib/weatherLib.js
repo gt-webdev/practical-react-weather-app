@@ -35,10 +35,11 @@ export function fetchHourlyData() {
     return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${longitude}&lon=${latitude}&appid=${API_KEY}`)
         .then((response) => response.json())
         .then((data) => {
-            return data.list.map((item) => (
+            return data.list.map((item, index) => (
                 {
                     time: convertHourFormat(item.dt_txt.split(" ")[1]),
                     date: convertDateFormat(item.dt_txt.split(" ")[0]),
+                    dateNum: Math.floor(index / 8),
                     condition: item.weather[0].main,
                     icon: item.weather[0].icon
                 }

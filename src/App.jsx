@@ -6,23 +6,20 @@ import Filters from "./components/Filters";
 import "./App.css";
 
 export default function App() {
+    /**
+     * Maintains state for a list of objects, each containing values related to a 3-hour forecast
+     * throughout the coming five days.
+     */ 
     const [hourlyData, setHourlyData] = useState([]);
-    const [filter, setFilter] = useState(5);
-
-    const filterData = (data, filterNum) => {
-      return data.filter((item, index) => index <= filterNum * 8);
-    }
 
     useEffect(() => {
-        fetchHourlyData().then(response => {
-          setHourlyData(filterData(response, filter))
-        });
-    }, [filter])
+        fetchHourlyData().then(response => setHourlyData(response));
+    }, [])
 
     return (
       <div className="App">
         <CurrentWeatherDisplay />
-        <Filters filter={filter} setFilter={setFilter} setData={setHourlyData} />
+        <Filters />
         <ForecastDisplay data={hourlyData} label={"Hourly Forecast (5 days)"} />
       </div>
     );
