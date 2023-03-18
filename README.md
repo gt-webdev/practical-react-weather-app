@@ -62,7 +62,6 @@ Example output:
 		"condition": "Clouds",
 		"icon": "04d",
 	},
-	// ...
 	{
 	    "time": "3:00 AM",
 	    "date": "03/23/2023",
@@ -88,7 +87,7 @@ Example output:
 > **Important Note**: The `icon` attribute in these outputs contain a three-character string. To retrieve its corresponding image, simply place it into the url: `https://openweathermap.org/img/wn/{icon}@.png`, replacing `{icon}`  with your icon value.
 > ```jsx
 > const icon = "04n";
-> return <img src={`https://openweathermap.org/img/wn/{icon}@.png`}/>
+> return <img src={`https://openweathermap.org/img/wn/${icon}@.png`}/>
 > ```
 
 ### :pencil: Tasks
